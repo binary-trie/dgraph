@@ -162,7 +162,7 @@ func main() {
 	if err != nil {
 		panic("unable to open file for writing data:" + err.Error())
 	}
-	opts := badger.DefaultOptions(dir)
+	opts := badger.DefaultOptions(dir).WithBypassLockGuard(true)
 	db, err := badger.OpenManaged(opts)
 	defer db.Close()
 	if err != nil {
